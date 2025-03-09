@@ -62,5 +62,21 @@ public class Task_2 {
 
         imageSaver.saveImage(image, "task_2b");
 
+        // Chessboard (2c)
+
+        image = loadImage("images/upload.png");
+
+        int squareSize = 50;
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                boolean isColor1 = ((x / squareSize) % 2 == (y / squareSize) % 2);
+                if (isColor1) {
+                    image.setRGB(x, y, Color.BLACK.getRGB());
+                }
+            }
+        }
+
+        imageSaver.saveImage(image, "task_2c");
     }
 }
