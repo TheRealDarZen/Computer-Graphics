@@ -1,7 +1,7 @@
 import java.awt.image.*;
 import java.awt.Color;
 
-public class Task_2 {
+public class Task_1b {
     public static void main(String[] args) {
         ImageSaver imageSaver = new ImageSaver();
 
@@ -23,6 +23,6 @@ public class Task_2 {
             }
         }
 
-        imageSaver.saveImage(image, "task_2");
+        imageSaver.saveImage(image, "task_1b");
     }
 }
