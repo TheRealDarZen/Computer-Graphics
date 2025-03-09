@@ -5,21 +5,29 @@ import java.io.File;
 import java.io.IOException;
 
 public class Task_2 {
+
+    public static BufferedImage loadImage(String path) {
+        try {
+            return ImageIO.read(new File(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) {
         ImageSaver imageSaver = new ImageSaver();
 
         BufferedImage image;
-        try {
-            image = ImageIO.read(new File("images\\upload.png"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        image = loadImage("images/upload.png");
 
         int width = image.getWidth();
         int height = image.getHeight();
 
         int centerX = width / 2;
         int centerY = height / 2;
+
+        // Concentric rings (2a)
 
         int ring_width = 20;
 
@@ -28,13 +36,31 @@ public class Task_2 {
                 double d = Math.sqrt((double) (y - centerY) * (y - centerY) + (double) (x - centerX) * (x - centerX));
                 int det = ((int) d) / ring_width;
                 if ((det % 2) == 0) {
-                    image.setRGB(x, y, new Color(0, 0, 0).getRGB());
+                    image.setRGB(x, y, Color.BLACK.getRGB());
                 }
             }
         }
 
         imageSaver.saveImage(image, "task_2a");
 
+        // Grid (2b)
+
+        image = loadImage("images/upload.png");
+
+        int gridSize = 50;
+        int lineWidth = 15;
+        int offset = 10;
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                boolean isGridLine = ((x - offset + gridSize) % gridSize < lineWidth) || ((y - offset + gridSize) % gridSize < lineWidth);
+                if (isGridLine) {
+                    image.setRGB(x, y, Color.BLACK.getRGB());
+                }
+            }
+        }
+
+        imageSaver.saveImage(image, "task_2b");
 
     }
 }
