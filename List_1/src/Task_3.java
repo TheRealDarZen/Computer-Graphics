@@ -89,8 +89,24 @@ public class Task_3 {
 
         // Pattern 4
 
+        int circlesSize = 200;
+        gapSize = 10;
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                int row = y / circlesSize;
+                int col = x / circlesSize;
+
+                centerX = col * circlesSize + circlesSize / 2;
+                centerY = row * circlesSize + circlesSize / 2;
+
+                double distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+                int ringNumber = (int) (distance / gapSize);
+
+                boolean isCircle = ringNumber % 2 == 0;
+                Color color = isCircle ? circleColor : bgColor;
+
+                image.setRGB(x, y, color.getRGB());
 
             }
         }
