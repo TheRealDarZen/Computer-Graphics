@@ -41,9 +41,22 @@ public class Task_3 {
 
         // Pattern 2
 
+        Color diamondColor = Color.BLACK;
+        int diamondSize = 50;
+        bgColor = Color.WHITE;
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                int row = y / diamondSize;
+                int col = x / diamondSize;
 
+                int centerX = col * diamondSize + diamondSize / 2;
+                int centerY = row * diamondSize + diamondSize / 2;
+
+                boolean isDiamond = Math.abs(x - centerX) + Math.abs(y - centerY) <= diamondSize / 2;
+
+                Color color = isDiamond ? diamondColor : bgColor;
+                image.setRGB(x, y, color.getRGB());
             }
         }
 
