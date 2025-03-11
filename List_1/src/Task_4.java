@@ -38,8 +38,8 @@ public class Task_4 {
             for (int x = 0; x < width; x++) {
                 double d = Math.sqrt((double) (y - centerY) * (y - centerY) + (double) (x - centerX) * (x - centerX));
                 int det = ((int) d) / ring_width;
-                boolean isUpload1 = (det % 2 == 1);
-                int color = isUpload1 ? upload1.getRGB(x, y) :upload2.getRGB(x, y);
+                boolean isCircle = (det % 2 == 0);
+                int color = isCircle ? upload2.getRGB(x, y) :upload1.getRGB(x, y);
 
                 image.setRGB(x, y, color);
             }
@@ -48,7 +48,23 @@ public class Task_4 {
         imageSaver.saveImage(image, "task_4a");
         image = emptyImage(width, height);
 
+        // Grid
 
+        int gridSize = 50;
+        int lineWidth = 15;
+        int offset = 10;
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                boolean isGridLine = ((x - offset + gridSize) % gridSize < lineWidth) || ((y - offset + gridSize) % gridSize < lineWidth);
+                int color = isGridLine ? upload2.getRGB(x, y) : upload1.getRGB(x, y);
+
+                image.setRGB(x, y, color);
+            }
+        }
+
+        imageSaver.saveImage(image, "task_4b");
+        image = emptyImage(width, height);
 
     }
 }
