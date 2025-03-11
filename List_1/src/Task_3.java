@@ -116,14 +116,25 @@ public class Task_3 {
 
         // Pattern 5
 
+        centerX = width / 2;
+        centerY = height / 2;
+        Color stripeColor = Color.BLACK;
+
+        int numOfStripes = 20;
+        double stripeWidth = Math.PI / numOfStripes;
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
+                double theta = Math.atan2(y - centerY, x - centerX);
 
+                boolean isStripe = (int) ((theta + Math.PI) / stripeWidth) % 2 == 0;
+
+                Color color = isStripe ? stripeColor : bgColor;
+                image.setRGB(x, y, color.getRGB());
             }
         }
 
         imageSaver.saveImage(image, "task_3e");
-        image = emptyImage(width, height);
 
     }
 }
