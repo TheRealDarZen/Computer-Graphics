@@ -67,15 +67,15 @@ public class Task_3 {
 
         int centerX = width / 2;
         int centerY = height / 2;
-        int gapIncrease = 5;
+        int gapSize = 5;
         circleColor = Color.BLACK;
         bgColor = Color.WHITE;
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 double distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-                double sizeCoeff = Math.pow(distance / 50, 1);
-                int ringNumber = (int) ((distance + sizeCoeff) / gapIncrease);
+                double sizeCoeff = Math.pow(distance / 100, 1.2);
+                int ringNumber = (int) (distance / (gapSize + sizeCoeff));
 
                 boolean isCircle = ringNumber % 2 == 0;
                 Color color = isCircle ? circleColor : bgColor;
