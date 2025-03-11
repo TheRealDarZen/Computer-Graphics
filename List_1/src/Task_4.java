@@ -30,7 +30,7 @@ public class Task_4 {
         int centerX = width / 2;
         int centerY = height / 2;
 
-        // Rings
+        // Rings (4a)
 
         int ring_width = 20;
 
@@ -48,7 +48,7 @@ public class Task_4 {
         imageSaver.saveImage(image, "task_4a");
         image = emptyImage(width, height);
 
-        // Grid
+        // Grid (4b)
 
         int gridSize = 50;
         int lineWidth = 15;
@@ -65,6 +65,21 @@ public class Task_4 {
 
         imageSaver.saveImage(image, "task_4b");
         image = emptyImage(width, height);
+
+        // Chessboard (4c)
+
+        int squareSize = 50;
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                boolean isColor1 = ((x / squareSize) % 2 == (y / squareSize) % 2);
+                int color = isColor1 ? upload1.getRGB(x, y) : upload2.getRGB(x, y);
+
+                image.setRGB(x, y, color);
+            }
+        }
+
+        imageSaver.saveImage(image, "task_4c");
 
     }
 }
