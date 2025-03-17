@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Task_1 {
+public class Clock {
     public static void main(String[] args) {
         double period = 2.0;
         double amplitude = 30.0;
