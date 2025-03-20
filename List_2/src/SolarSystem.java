@@ -81,7 +81,7 @@ public class SolarSystem extends JPanel implements ActionListener {
         }
 
         // Update moons' angle
-        moonAngle += 0.1 * deltaTime * 60;
+        moonAngle += 0.135 * deltaTime * 60;
 
         repaint();
     }
