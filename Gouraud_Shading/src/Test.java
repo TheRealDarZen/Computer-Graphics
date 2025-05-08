@@ -11,7 +11,7 @@ public class Test extends JFrame {
 
     private BufferedImage bufferedImage;
     private ArrayList<Triangle> triangles;
-    private Random random;
+    private Random rand;
     private JPanel renderPanel;
     private JPanel controlPanel;
     private boolean renderToBuffer = true;  // true - BufferedImage, false - Graphics
@@ -22,7 +22,7 @@ public class Test extends JFrame {
         setSize(WIDTH, HEIGHT);
         setLayout(new BorderLayout());
 
-        random = new Random();
+        rand = new Random();
         triangles = new ArrayList<>();
         bufferedImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
@@ -132,17 +132,17 @@ public class Test extends JFrame {
 
     private void addRandomTriangle() {
         // Random triangle points
-        int x1 = random.nextInt(WIDTH);
-        int y1 = random.nextInt(HEIGHT);
-        int x2 = random.nextInt(WIDTH);
-        int y2 = random.nextInt(HEIGHT);
-        int x3 = random.nextInt(WIDTH);
-        int y3 = random.nextInt(HEIGHT);
+        int x1 = rand.nextInt(WIDTH);
+        int y1 = rand.nextInt(HEIGHT);
+        int x2 = rand.nextInt(WIDTH);
+        int y2 = rand.nextInt(HEIGHT);
+        int x3 = rand.nextInt(WIDTH);
+        int y3 = rand.nextInt(HEIGHT);
 
         // Random colors
-        Color c1 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-        Color c2 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-        Color c3 = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+        Color c1 = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+        Color c2 = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+        Color c3 = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
 
         triangles.add(new Triangle(x1, y1, x2, y2, x3, y3, c1, c2, c3));
     }

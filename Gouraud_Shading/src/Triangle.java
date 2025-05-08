@@ -102,7 +102,7 @@ public class Triangle {
 
         double areaTotal = Math.abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0);
 
-        // Finding areas using matrix' determinant
+        // Finding areas using matrix's determinant
         double areaA = Math.abs((x * (y2 - y3) + x2 * (y3 - y) + x3 * (y - y2)) / 2.0);
         double areaB = Math.abs((x1 * (y - y3) + x * (y3 - y1) + x3 * (y1 - y)) / 2.0);
         double areaC = Math.abs((x1 * (y2 - y) + x2 * (y - y1) + x * (y1 - y2)) / 2.0);
