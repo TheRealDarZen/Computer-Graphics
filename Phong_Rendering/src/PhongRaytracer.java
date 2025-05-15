@@ -113,18 +113,15 @@ public class PhongRaytracer {
         }
     }
 
-    // Constructor
     public PhongRaytracer() {
         this.lights = new ArrayList<>();
     }
 
-    // Calculate light attenuation based on distance
     private double calculateAttenuation(double distance, double c2, double c1, double c0) {
         double attenuation = 1.0 / (c2 * distance * distance + c1 * distance + c0);
         return Math.min(attenuation, 1.0);
     }
 
-    // Load scene from text file
     public boolean loadScene(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -289,19 +286,16 @@ public class PhongRaytracer {
                     Color pixelColor = calculatePhongIllumination(intersectionPoint, normal, rayDirection);
                     image.setRGB(x, y, pixelColor.getRGB());
                 } else {
-                    // No intersection, set background color to black
                     image.setRGB(x, y, Color.BLACK.getRGB());
                 }
             }
         }
 
-        // Save the rendered image
         try {
             File outputFile = new File(outputFileName);
             ImageIO.write(image, "PNG", outputFile);
             System.out.println("Image saved to " + outputFileName);
 
-            // Optional: display image in a window
             displayImage(image);
         } catch (IOException e) {
             System.err.println("Error saving image: " + e.getMessage());
@@ -343,10 +337,8 @@ public class PhongRaytracer {
                 b += attenuation * diffuseFactor * (light.intensity.getBlue() / 255.0f) * (sphere.diffuse.getBlue() / 255.0f);
 
                 // Specular reflection (Phong model)
-                // Calculate reflection vector
                 Vector3 reflectionVector = normal.multiply(2 * normal.dot(lightDirection)).subtract(lightDirection).normalize();
 
-                // Calculate specular factor
                 double specularFactor = Math.max(0, reflectionVector.dot(observerDirection));
 
                 if (specularFactor > 0) {
@@ -361,7 +353,6 @@ public class PhongRaytracer {
             }
         }
 
-        // Clamp color values to [0,1]
         r = Math.min(1.0f, Math.max(0.0f, r));
         g = Math.min(1.0f, Math.max(0.0f, g));
         b = Math.min(1.0f, Math.max(0.0f, b));
@@ -369,7 +360,6 @@ public class PhongRaytracer {
         return new Color(r, g, b);
     }
 
-    // Display the rendered image in a window
     private void displayImage(BufferedImage image) {
         Frame frame = new Frame("Phong Raytracer Rendering");
         Canvas canvas = new Canvas() {
@@ -393,7 +383,6 @@ public class PhongRaytracer {
         });
     }
 
-    // Main method
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Usage: java PhongRaytracer <scene-file>");
