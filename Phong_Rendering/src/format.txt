@@ -1,0 +1,13 @@
+Resolution: width height
+Output file name
+Ambient light (R G B)
+Sphere: centerX centerY centerZ radius
+Diffuse reflection coefficients (kdR kdG kdB)
+Specular reflection coefficients (ksR ksG ksB)
+Ambient reflection coefficients (kaR kaG kaB)
+Self luminance (SR SG SB)
+Glossiness coefficient (g)
+Attenuation coefficients (c2 c1 c0)
+Number of lights
+Light: posX posY posZ intensityR intensityG intensityB
+for each light
